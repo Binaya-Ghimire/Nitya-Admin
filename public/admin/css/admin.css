@@ -1,0 +1,43 @@
+.badge-success
+{
+	color: white;
+	background-color: #00a65a !important;
+}
+.badge-danger
+{
+	color: white;
+	background-color: #dd4b39 !important;
+}
+.badge-info
+{
+	color:white;
+	background-color: #17a2b8;
+}
+
+.box.box-primary {
+    margin-top: 5px !important;
+    height: auto;
+    min-height: 600px;
+}
+
+ .product_image
+ {
+ 	height: 500px;
+ }
+ .content-wrapper
+ {
+ 	background-color: #fff !important;
+ }
+ .background
+ {
+ 	height: 600px;
+
+ }
+ .main
+ {
+ 	background-color: white;
+ }
+.top-form
+{
+	margin-bottom: 15px;
+}
