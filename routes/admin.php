@@ -48,6 +48,10 @@ Route::prefix('payment')->group(function (){
 	//Route for payment report
 	Route::get('payment-report',[PaymentController::class, 'paymentReport'])->name('payment-report');
 	Route::post('get-report', [PaymentController::class, 'userPaymentReport'])->name('fetch-report');
+
+	//route for balance Report
+	Route::get('balance-report', [PaymentController::class, 'balanceReport'])->name('balance-report');
+	Route::post('get-balance-report', [PaymentController::class, 'userBalanceReport'])->name('get-balance-report');
 });
 
 //route for payment status

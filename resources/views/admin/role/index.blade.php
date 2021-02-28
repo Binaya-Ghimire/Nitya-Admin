@@ -29,21 +29,18 @@
                                 <td>
                                     <a href="{{route('edit-role', $role)}}" class="btn btn-sm btn-primary" >Edit</a>
 
-                                    <form method="Post"  class="form-inline" action="{{route('delete-role',$role)}}">
+                                    <form method="Post"  class="form-inline delete-role" action="{{route('delete-role',$role)}}">
                                         @method('DELETE')
                                         @csrf
-                                        <button type="submit" onclick=" return confirm('Are You sure to delete?')" class="btn btn-danger btn-sm mb-2">Delete</button>
+                                        <button type="submit" class="btn btn-danger btn-sm mb-2">Delete
+                                        </button>
                                     </form>       
                                 </td>
                             </tr>
-                        @endforeach
-                        
+                        @endforeach   
                   </tbody>
-                  
                 </table>
             </div>
         </div>
     </div>
-
-
 @endsection

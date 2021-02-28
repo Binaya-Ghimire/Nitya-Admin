@@ -40,6 +40,9 @@
             <li>
                 <a href="{{route('payment-report')}}"><i class="fa fa-file"></i><span>Payment Report </span></a>
             </li>
+            <li>
+                <a href="{{route('balance-report')}}"><i class="fa fa-file"></i><span>Balance Report </span></a>
+            </li>
             <li class="header">Token Management</li>
 
             <li>

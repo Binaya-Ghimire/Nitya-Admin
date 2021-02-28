@@ -38,12 +38,19 @@
     <script src="/js/bootstrap.min.js"></script>   
     <!-- <script src="/js/bootstrap.min.js.map"></script> -->
     <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    
     <script type="text/javascript">
     	$(document).ready( function () {
     		$('#myTable').DataTable();
     	} );
     </script>
-  </body>
+
+    <script>
+    $(".delete-role").on("submit", function(){
+        return confirm("Do you want to delete this item?");
+    });
+</script>
    @toastr_js
    @toastr_render
+  </body>
 </html>

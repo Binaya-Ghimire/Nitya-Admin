@@ -136,10 +136,15 @@ class PaymentController extends Controller
     public function userPaymentReport(Request $request)
     {
         $users = User::all();
-        if (is_null($request->start_date)) {
+        if (is_null($request->start_date) && is_null($request->end_date)) {
             $user_history = BalanceHistory::where('user_id',$request->user_id)->get();
             $user_balance = UserBalance::where('user_id',$request->user_id)->get();
-        }else{
+        }elseif (is_null($request->end_date)) {
+            $user_history = BalanceHistory::where('user_id',$request->user_id)->whereDate('created_at', '>=', $request->start_date)->get();
+            $user_balance = UserBalance::where('user_id',$request->user_id)->whereDate('created_at', '>=', $request->start_date)->get();
+        }
+
+        else{
             $user_id = $request->user_id;
             $start_date = $request->start_date;
             $end_date = $request->end_date;
@@ -149,5 +154,27 @@ class PaymentController extends Controller
        
         return view('admin.payments.report', compact('user_history', 'user_balance', 'users'));
 
+    }
+
+    public function balanceReport()
+    {
+        $users =  User::all();
+        $balances = UserBalance::all();
+        return view('admin.payments.balance_report', compact('users', 'balances'));
+    }
+    public function userBalanceReport(Request $request)
+    {
+        $users = User::all();
+        if(is_null($request->start_date) && is_null($request->end_date))
+        {
+            $balances = UserBalance::where('user_id', $request->user_id)->get();
+        }elseif(is_null($request->end_date))
+        {
+             $balances = UserBalance::where('user_id', $request->user_id)->whereDate('created_at', '>=', $request->start_date)->get();
+        }else{
+            $balances = UserBalance::where('user_id', $request->user_id)->whereBetween('created_at', [$request->start_date, $request->end_date])->get();
+        }
+        
+        return view('admin.payments.balance_report', compact('users', 'balances'));
     }
 }
