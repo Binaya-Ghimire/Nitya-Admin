@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\PaymentStatusController;
 use App\Http\Controllers\Admin\PaymentTypeController;
 use App\Http\Controllers\Admin\DefaultRateController;
 use App\Http\Controllers\Admin\TokenController;
+use App\Http\Controllers\Admin\SmsController;
 
  Route::get('dashboard',[DashboardController::class, 'index'])->name('admin-dashboard');
 
@@ -95,3 +96,7 @@ Route::prefix('token')->group(function() {
 	Route::put('update/{userToken}',[TokenController::class, 'update'])->name('update-token');
 	Route::get('delete/{userToken}', [TokenController::class, 'destroy'])->name('delete-token');
 });
+
+
+//Route for sending sms 
+Route::get('sendsms/{token}', [SmsController::class, 'sendSms'])->name('send.sms');
