@@ -39,11 +39,7 @@
                                 <td>
                                     <a href="{{route('edit-payment-type', $paymentType)}}" class="btn btn-primary btn-sm"> Edit</a>
 
-                                    <form method="Post" class="form-inline" action="{{route('delete-payment-type', $paymentType->id)}}">
-                                        @method('DELETE')
-                                        @csrf
-                                        <button type="submit" onclick="return confirm('Are you sure to delete?')" class="btn btn-danger btn-sm mb-2">Delete</button>
-                                    </form>
+                                    <button class="btn btn-danger btn-flat btn-sm remove-paymentType" data-id="{{ $paymentType }}" data-action="{{ route('delete-payment-type',$paymentType) }}"> Delete</button>
                                 </td>
                             </tr>
                         @endforeach
@@ -52,4 +48,33 @@
             </div>
         </div>
     </div>
+@endsection
+@section('js')
+    <script type="text/javascript">
+  $("body").on("click",".remove-paymentType",function(){
+    var current_object = $(this);
+    swal({
+        title: "Are you sure?",
+        text: "You will not be able to recover this after you delete!",
+        type: "error",
+        showCancelButton: true,
+        dangerMode: true,
+        cancelButtonClass: '#DD6B55',
+        confirmButtonColor: '#dc3545',
+        confirmButtonText: 'Delete',
+    },function (result) {
+        if (result) {
+            var action = current_object.attr('data-action');
+            var token = jQuery('meta[name="csrf-token"]').attr('content');
+            var id = current_object.attr('data-id');
+
+            $('body').html("<form class='form-inline remove-form' method='post' action='"+action+"'></form>");
+            $('body').find('.remove-form').append('<input name="_method" type="hidden" value="delete">');
+            $('body').find('.remove-form').append('<input name="_token" type="hidden" value="'+token+'">');
+            $('body').find('.remove-form').append('<input name="id" type="hidden" value="'+id+'">');
+            $('body').find('.remove-form').submit();
+        }
+    });
+});
+</script>
 @endsection

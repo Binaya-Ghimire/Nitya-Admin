@@ -18,6 +18,7 @@
     <link href="/admin/css/admin.css" rel="stylesheet" type="text/css" />
     <link href="/admin/css/skins/_all-skins.min.css" rel="stylesheet" type="text/css" />
    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
     
     <link rel="stylesheet" href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
     @toastr_css
@@ -38,18 +39,14 @@
     <script src="/js/bootstrap.min.js"></script>   
     <!-- <script src="/js/bootstrap.min.js.map"></script> -->
     <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-    
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+    @yield('js')    
     <script type="text/javascript">
     	$(document).ready( function () {
     		$('#myTable').DataTable();
     	} );
     </script>
-
-    <script>
-    $(".delete-role").on("submit", function(){
-        return confirm("Do you want to delete this item?");
-    });
-</script>
    @toastr_js
    @toastr_render
   </body>
