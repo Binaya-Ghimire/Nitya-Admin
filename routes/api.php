@@ -19,4 +19,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('sendsms/{token}',[SmsController::class, 'sendSms']);
+Route::post('sendsms/',[SmsController::class, 'sendSms']);
+Route::get('balance/{token}', [SmsController::class, 'viewBalance']);

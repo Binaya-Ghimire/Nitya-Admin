@@ -8,9 +8,9 @@ use App\Http\Controllers\Controller;
 
 class SmsController extends Controller
 {
-    public function sendSms($token)
+    public function sendSms(Request $request)
     {
-    	$userToken = UserToken::where('token', $token)->first();
+        $userToken = UserToken::where('token', $request->token)->first();
     	if ($userToken->status == 0) {
     		echo "The key is not Active at the moment";
     	}else{
@@ -27,7 +27,7 @@ class SmsController extends Controller
     			}else{
     				$message = "hello this is test";
     				$phone_number = "9841984123";
-    				 $this->send();
+    				$this->send();
     			}
     		}
     	}   	
@@ -35,5 +35,13 @@ class SmsController extends Controller
     public function send()
     {
     	echo "Ready to send the message ";
+    }
+
+
+    public function viewBalance($token)
+    {
+        $userToken = UserToken::where('token', $token)->first();
+        $balances = $userToken->user->UserBalance;
+        return $balances;
     }
 }
