@@ -27,14 +27,16 @@ class SmsController extends Controller
     			}else{
     				$message = "hello this is test";
     				$phone_number = "9841984123";
-    				$this->send();
+    				$this->send($message, $phone_number);
     			}
     		}
     	}   	
     }
-    public function send()
+    public function send($message, $phone_number)
     {
-    	echo "Ready to send the message ";
+    	echo "ready to send sms with";
+        echo "<br>"."message:". $message;
+        echo "<br>"."to :".$phone_number;
     }
 
 
