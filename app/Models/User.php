@@ -2,13 +2,14 @@
 
 namespace App\Models;
 
+use App\Models\SmsHistory;
 use App\Models\UserBalance;
 use App\Models\BalanceHistory;
+use Spatie\Permission\Traits\HasRoles;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
@@ -58,6 +59,11 @@ class User extends Authenticatable
     public function userToken()
     {
         return $this->hasMany(UserToken::class);
+    }
+
+    public function SmsHistory()
+    {
+        return $this->hasMany(SmsHistory::class,'send_by')->latest();
     }
      
 }

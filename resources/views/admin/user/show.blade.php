@@ -70,6 +70,8 @@
                         <a href="{{route('add-user-balance', $user)}}" class="btn btn-success btn-sm "> Add Balance To This</a>
 
                         <a href="{{route('user-balance-report', $user)}}" class="btn btn-sm btn-info">View Balance Report </a>
+
+                        <a href="{{route('user-sms-history', $user)}}" class="btn btn-warning"> View sms History</a>
                 </li>
             </ul>
             <div class="title col-md-12">

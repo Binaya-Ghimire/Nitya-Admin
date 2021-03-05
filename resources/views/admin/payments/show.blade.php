@@ -31,7 +31,7 @@
                     <strong>Payment Date</strong> : {{ $payment->date}}
                 </li>
                 <li class="list-group-item">
-                    <strong>Payment Date</strong> : {{ $payment->created_at->format('l j F Y') }}
+                    <strong>Requested Date</strong> : {{ $payment->created_at->format('l j F Y') }}
                 </li>
 
                 <li class="list-group-item">
@@ -47,7 +47,7 @@
                 @endif
 
             </ul>
-            
+            @if($payment->paymentstatus->id == "1")
             <div class="col-md-6">
                 <form class="form-horizontal" method="post" action="{{route('update-payment', $payment)}}">
                 @method('PUT')
@@ -81,7 +81,7 @@
                     </div>
                 </form> 
             </div>
-            
+            @endif
         </div>
     </div>
 </div>
