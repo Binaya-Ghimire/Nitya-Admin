@@ -4,7 +4,7 @@
     <div class="box box-primary">
         @include('flashMsg.flashmessages')
         <div class="box-header">
-            <h3>Add User</h3>
+            <h3>Add Balance To User</h3>
         </div>
         <div class="box-body">
           <form class="form-horizontal" method="post" action="{{route('save-user-balance', $user)}}">
@@ -21,7 +21,7 @@
                     <div class="form-group">
                         <label class="col-md-4 control-label">Rate:</label>
                         <div class="col-md-6">
-                           <input  class="form-control" type="number" name="rate" step="any">
+                           <input  class="form-control" type="number" value="{{$default_rate->default_rate}}" name="rate" step="any">
                         </div>
                     </div>
 

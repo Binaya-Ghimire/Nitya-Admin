@@ -22,6 +22,13 @@
                     </div>
 
                     <div class="form-group">
+                        <label class="col-md-4 control-label">Token For</label>
+                        <div class="col-md-6">
+                            <input class="form-control" type="text" name="token_for" placeholder="For web, api" required>                       
+                        </div>    
+                    </div>
+
+                    <div class="form-group">
                         <label class="col-md-4 control-label">Status</label>
                         <div class="col-md-6">
                             <input type="radio" name="status" value="0" checked>

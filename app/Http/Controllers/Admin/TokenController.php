@@ -41,11 +41,13 @@ class TokenController extends Controller
      */
     public function store(Request $request)
     {
+        
         $token = UserToken::create([
             'user_id'=>$request->user_id,
             'token'=>Str::random(60),
             'created_by'=>Auth::id(),
             'status'=>$request->status,
+            'token_for'=>$request->token_for,
         ]);
         toastr()->success("User Token Generated Successfully");
         return redirect()->route('view-tokens');
@@ -86,6 +88,7 @@ class TokenController extends Controller
         $userToken->update([
             'user_id'=>$request->user_id,
            'status'=>$request->status,
+           'token_for'=>$request->token_for,
         ]);
         toastr()->success('User Token Updated Successfully');
         return redirect()->route('view-tokens');

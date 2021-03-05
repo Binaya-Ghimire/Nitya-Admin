@@ -19,6 +19,7 @@
                         <th>User Name</th>
                         <th>Token</th>
                         <th>Status</th>
+                        <th>Token For</th>
                         <th>Created By</th>
                         <th>Created Time</th>
                         <th>Action</th>
@@ -38,6 +39,7 @@
                                     <span class="badge badge-info">Marked Deleted</span>
                                     @endif
                                 </td>
+                                <td>{{$userToken->token_for}}</td>
                                 <td>{{$userToken->createdBy->name}}</td>
                                 <td>{{$userToken->created_at->format('F j  Y')}}</td>           
                                 <td>

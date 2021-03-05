@@ -157,7 +157,8 @@ class UserController extends Controller
 
     public function addBlanceForm(User $user)
     {
-        return view('admin.user.addbalance', compact('user'));
+        $default_rate = DefaultRate::first();
+        return view('admin.user.addbalance', compact('user', 'default_rate'));
     }
 
     public function addBalance(Request $request, User $user)
@@ -173,14 +174,14 @@ class UserController extends Controller
             'user_id'=>$user->id,
             'balance'=>$request->amount,
             'rate_per_sms'=>$rate,
-            'coins'=>$request->amount/$rate,
+            'coins'=>round($request->amount/$rate),
         ]);
         BalanceHistory::create([
             'user_id'=>$user->id,
             'added_by'=>Auth::id(),
             'balance'=>$request->amount,
             'rate_per_sms'=>$rate,
-            'coins'=>$request->amount/$rate,
+            'coins'=>round($request->amount/$rate),
             'remarks'=>$request->remarks,
         ]);
 
@@ -201,7 +202,5 @@ class UserController extends Controller
         ]);
         toastr()->success('Rate Per SMS updated');
         return redirect()->route('show-user',[$user]);
-
-        
     }
 }

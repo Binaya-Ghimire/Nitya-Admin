@@ -38,11 +38,11 @@
                             <tfoot>
                                 <tr>
                                     <td><strong>
-                                        Total balance :{{$balance->sum('balance')}}</strong> 
+                                        Total balance :{{$user->userBalance->sum('balance')}}</strong> 
                                     </td>
                                     <td></td>
                                     <td>
-                                       <strong>Total coins: {{$balance->sum('coins')}}</strong>  
+                                       <strong>Total coins: {{$user->userBalance->sum('coins')}}</strong>  
                                     </td>
                                 </tr>
                             </tfoot>
@@ -68,6 +68,8 @@
                         <a href="{{route('edit-user', $user)}}" class="btn btn-primary btn-sm"> Edit This User</a>
 
                         <a href="{{route('add-user-balance', $user)}}" class="btn btn-success btn-sm "> Add Balance To This</a>
+
+                        <a href="{{route('user-balance-report', $user)}}" class="btn btn-sm btn-info">View Balance Report </a>
                 </li>
             </ul>
             <div class="title col-md-12">

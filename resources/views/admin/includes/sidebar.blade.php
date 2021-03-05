@@ -50,6 +50,13 @@
                     <i class="fa fa-key"></i> <span>Token</span>
                 </a>
             </li>
+
+            <li class="header">Send Message</li>
+            <li>
+                <a href="{{route('create.sms')}}">
+                    <i class="fa fa-key"></i> <span>Send Message</span>
+                </a>
+            </li>
         </ul>
     </section>
 </aside>

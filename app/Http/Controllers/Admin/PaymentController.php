@@ -55,7 +55,8 @@ class PaymentController extends Controller
     public function show(Payment $payment)
     {
         $statuses = PaymentStatus::all();
-        return view('admin.payments.show', compact('payment', 'statuses'));
+        $rate = DefaultRate::first();
+        return view('admin.payments.show', compact('payment', 'statuses', 'rate'));
     }
 
     /**
@@ -95,7 +96,7 @@ class PaymentController extends Controller
             'user_id'=> $payment->userid,
             'balance'=>$payment->amount,
             'rate_per_sms'=>$rate,
-            'coins'=>$payment->amount/$rate,
+            'coins'=>round($payment->amount/$rate),
            ]);
            BalanceHistory::create([
                 'user_id'=> $payment->userid,
@@ -176,5 +177,11 @@ class PaymentController extends Controller
         }
         
         return view('admin.payments.balance_report', compact('users', 'balances'));
+    }
+
+    public function getBalanceReportByUser(User $user)
+    {
+        
+        return view('admin.user.user_report', compact('user'));
     }
 }

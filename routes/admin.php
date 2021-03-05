@@ -53,6 +53,9 @@ Route::prefix('payment')->group(function (){
 	//route for balance Report
 	Route::get('balance-report', [PaymentController::class, 'balanceReport'])->name('balance-report');
 	Route::post('get-balance-report', [PaymentController::class, 'userBalanceReport'])->name('get-balance-report');
+
+	//Route for   balance report by user
+	Route::get('user-balance-report/{user}', [PaymentController::class, 'getBalanceReportByUser'])->name('user-balance-report');
 });
 
 //route for payment status
@@ -99,4 +102,5 @@ Route::prefix('token')->group(function() {
 
 
 //Route for sending sms 
-Route::get('sendsms/{token}', [SmsController::class, 'sendSms'])->name('send.sms');
+Route::get('createsms', [SmsController::class, 'createSms'])->name('create.sms');
+Route::post('sendsms', [SmsController::class, 'sendSms'])->name('send.sms');

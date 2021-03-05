@@ -10,7 +10,7 @@ class UserToken extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'token', 'created_by', 'status'];
+    protected $fillable = ['user_id', 'token', 'created_by', 'status', 'token_for'];
 
     public function user()
     {

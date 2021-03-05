@@ -18,6 +18,7 @@ class CreateUserTokensTable extends Migration
             $table->foreignId('user_id')->nullable();
             $table->string('token');
             $table->foreignId('created_by')->nullable();
+            $table->string('token_for');
             $table->integer('status');
             $table->timestamps();
 

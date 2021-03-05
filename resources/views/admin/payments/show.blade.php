@@ -66,8 +66,7 @@
                     <div class="form-group">
                         <label class="col-md-4 control-label">Rate Per SMS:</label>
                         <div class="col-md-6">
-                            <input type="number" name="rate" class="form-control" step="any" placeholder="Rate per Sms">
-                            <p>Leave blank for default sms rate</p> 
+                            <input type="number" name="rate" class="form-control" step="any" value="{{$rate->default_rate}}"> 
                         </div>
                     </div>
 
