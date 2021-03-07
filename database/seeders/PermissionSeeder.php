@@ -34,6 +34,18 @@ class PermissionSeeder extends Seeder
             'payment-status-create',
             'payment-status-edit',
             'payment-status-delete',
+            'default-rate-list',
+            'default-rate-create',
+            'default-rate-edit',
+            'payment-list',
+            'payment-edit',
+            'payment-report',
+            'user-balance-report',
+            'balance-report',
+            'token-list',
+            'token-create',
+            'token-edit',
+            'token-delete',
         ];
         
         $role = Role::first();

@@ -30,7 +30,7 @@ class SmsController extends Controller
                 if($total_coins < $required_coins){
                     echo("You do not have sufficient balance to send the sms");
                 }else{
-                    // $this->send($message, $phone_number);
+                    $this->send($message, $phone_number);
                     SmsHistory::create([
                         'send_by'=>$user->id,
                         'send_to'=>$phone_number,
@@ -58,7 +58,7 @@ class SmsController extends Controller
     {
         $send = new SendSms();
          $msg = $send->sendsms($phone_number, $message);
-        echo $msg;
+         return response($msg);
 
     }
 

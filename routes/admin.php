@@ -18,7 +18,11 @@ Route::prefix('user')->group(function() {
 	Route::get('create', [UserController::class, 'create'])->name('create-user');
 	Route::post('store', [UserController::class, 'store'])->name('store-user');
 	Route::get('show/{user}', [UserController::class, 'show'])->name('show-user');
+	// user update for email and username
 	Route::put('update/{user}', [UserController::class, 'update'])->name('update-user');
+	//user update for password and role
+	Route::put('update-password/{user}', [UserController::class, 'updatePassword'])->name('update-password');
+	Route::put('update-role/{user}', [UserController::class, 'updateRole'])->name('update-role');
 
 	// route for user bann and unbann
 	Route::get('banuser/{user}', [UserController::class, 'banUser'])->name('ban-user');

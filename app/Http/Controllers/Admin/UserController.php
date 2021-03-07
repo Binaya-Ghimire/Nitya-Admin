@@ -53,12 +53,14 @@ class UserController extends Controller
             'name'=>'required|max:50|string',
             'email'=>'required|unique:users',
             'password'=>'required|min:8|confirmed',
+            'mobile'=>'required|digits:10|'
         ]);
 
         try{
             $user = User::create([
                 'name'=>$request->name,
                 'email'=>$request->email,
+                'mobile'=>$request->mobile,
                 'password'=>Hash::make($request->password),
             ]);
             $user->AssignRole($request->role);    
@@ -105,31 +107,28 @@ class UserController extends Controller
         $request->validate([
             'name'=>'required|max:50|string',
             'email'=>'required',
-            'password'=>'required|min:8',
         ]);
         try{
             $user->update([
             'name'=>$request->name,
             'email'=>$request->email,
-            'password'=>Hash::make($request->password),
+            'mobile'=>$request->mobile,
             ]);
-            $user->AssignRole($request->role);
-            toastr()->success('User Updated Successfully');
+            toastr()->success('User Name And Updated Successfully');
         }catch(Exception $e){
             toastr()->error($e->getMessage());
         }
         return redirect()->back();
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(User $user)
+    public function updatePassword(Request $request, User $user)
     {
-        //
+        echo "hello" ;
+    }
+
+    public function updateRole(Request $request, User $user)
+    {
+        echo "hello there";
     }
 
     public function banUser(User $user)

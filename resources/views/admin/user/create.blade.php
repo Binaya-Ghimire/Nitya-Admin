@@ -23,6 +23,12 @@
                            <input  class="form-control" type="email" name="email" required>
                         </div>
                     </div>
+                    <div class="form-group">
+                       <label class="col-md-4 control-label">User Mobile:</label>
+                       <div class="col-md-6">
+                          <input  class="form-control" type="text" name="mobile"  pattern="[98]{2}[0-9]{8}" required>
+                      </div>
+                  </div>
 
                     <div class="form-group">
                         <label class="col-md-4 control-label">Password:</label>

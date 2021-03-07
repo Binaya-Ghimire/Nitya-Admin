@@ -14,11 +14,17 @@ use App\Http\Controllers\Controller;
 
 class PaymentController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct()
+    {
+        $this->middleware('permission:payment-list', ['only' => ['index','show']]);
+        $this->middleware('permission:payment-edit', ['only' => ['update']]);
+        $this->middleware('permission:payment-report', ['only' => ['paymentReport']]);
+        $this->middleware('permission:balance-report', ['only' => ['balanceReport']]);
+        $this->middleware('permission:user-balance-report', ['only'=>['getBalanceReportByUser']]);
+
+        
+    }
+
     public function index()
     {
         $payments = Payment::all();

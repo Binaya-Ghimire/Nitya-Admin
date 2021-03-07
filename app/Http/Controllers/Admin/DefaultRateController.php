@@ -9,11 +9,13 @@ use App\Http\Controllers\Controller;
 
 class DefaultRateController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct()
+    {
+        $this->middleware('permission:default-rate-list|default-rate-create|default-rate-edit', ['only' => ['index','show']]);
+         $this->middleware('permission:default-rate-create', ['only' => ['create','store']]);
+         $this->middleware('permission:default-rate-edit', ['only' => ['edit','update']]);
+    }
+
     public function index()
     {
         $rates = DefaultRate::all();

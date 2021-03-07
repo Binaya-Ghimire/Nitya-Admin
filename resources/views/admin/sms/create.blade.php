@@ -13,14 +13,14 @@
             <div class="form-group">
                 <label class="col-md-4 control-label">Enter number:</label>
                 <div class="col-md-6">
-                    <input  class="form-control" type="text" name="number" placeholder="enter number" pattern="[9]{1}[8]{1}[0-9]{8}" required>
+                    <input  class="form-control" type="text" name="number" placeholder="enter number" value="{{old('number')}}" pattern="[9]{1}[8]{1}[0-9]{8}" required>
                 </div>
             </div> 
 
             <div class="form-group">
                 <label class="col-md-4 control-label">Message:</label>
                 <div class="col-md-6">
-                    <textarea class="form-control" type="text" name="message" placeholder="Payment type" required></textarea> 
+                    <textarea class="form-control" type="text" name="message" placeholder="Payment type" value="{{old('message')}}" required></textarea> 
                 </div>
             </div>
 
@@ -35,7 +35,7 @@
                 </div>
             </div>           
             <div class="col-md-offset-4">
-                <button class="btn btn-primary">Add Payment Type</button>
+                <button class="btn btn-primary">Send SMS</button>
             </div>
         </form>
     </div>

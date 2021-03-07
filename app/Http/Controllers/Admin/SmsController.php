@@ -23,12 +23,14 @@ class SmsController extends Controller
     {
     	$userToken = UserToken::where('token', $request->token)->first();
     	if ($userToken->status == 0) {
-    		echo "The key is not Active at the moment";
+            toastr()->error("The key is not Active at the moment");
+            return back()->withInput();
     	}else{
     		$user = $userToken->user;
     		if(!is_null($user->banned_at))
     		{
-    			echo "Your Account was Banned from using this service";
+                toastr()->error("Your Account was Banned from using this service");
+    			return redirect()->back();
     		}else{
                 $message = $request->message;
                 $phone_number = $request->number;
@@ -36,9 +38,8 @@ class SmsController extends Controller
     			$total_coins= $user->UserBalance->sum('coins');
 
     			if($total_coins < $required_coins){
-    				echo("You do not have sufficient balance to send the sms");
+                    toastr()->error("You do not have sufficient balance to send the sms");
     			}else{
-                    echo "Message sent";
     				// $this->send($message, $phone_number);
                     SmsHistory::create([
                         'send_by'=>$user->id,

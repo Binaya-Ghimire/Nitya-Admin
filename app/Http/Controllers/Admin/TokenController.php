@@ -11,11 +11,15 @@ use App\Http\Controllers\Controller;
 
 class TokenController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct()
+    {
+        $this->middleware('permission:token-list', ['only' => ['index','show']]);
+        $this->middleware('permission:token-create', ['only' => ['create','store']]);
+        $this->middleware('permission:token-edit', ['only' => ['edit','update']]);
+        $this->middleware('permission:token-delete', ['only' => ['destroy']]);
+        
+    }
+
     public function index()
     {
         $tokens = UserToken::all();

@@ -16,16 +16,19 @@ class UserTableSeeder extends Seeder
             'name' => 'Super admin',
             'email' => 'super-admin@gmail.com',
             'password' => bcrypt('admin123'),
+            'mobile'=>'9843164367',
         ]);
        $manager = User::create([
             'name' => 'manager',
             'email' => 'manager@gmail.com',
             'password' => bcrypt('admin123'),
+            'mobile'=>'9843164367',
         ]);
        $user = User::create([
             'name' => 'User',
             'email' => 'user@gmail.com',
             'password' => bcrypt('admin123'),
+            'mobile'=>'9843164367',
         ]);
 
        $superadmin->AssignRole('super admin');
