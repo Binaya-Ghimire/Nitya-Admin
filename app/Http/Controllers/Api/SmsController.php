@@ -31,15 +31,15 @@ class SmsController extends Controller
                     echo("You do not have sufficient balance to send the sms");
                 }else{
                      $this->send($message, $phone_number);
-                    // SmsHistory::create([
-                    //     'send_by'=>$user->id,
-                    //     'send_to'=>$phone_number,
-                    //     'message'=>$message,
-                    //     'coins_used'=>$required_coins,
-                    // ]);
-                    // $remaining_balance = $this->deductCoin($user, $required_coins);
-                    // $msg = "msg sent to ".$phone_number."with coin cost ".$required_coins." and remaining balance is ". $remaining_balance;
-                    // return $msg;
+                    SmsHistory::create([
+                        'send_by'=>$user->id,
+                        'send_to'=>$phone_number,
+                        'message'=>$message,
+                        'coins_used'=>$required_coins,
+                    ]);
+                    $remaining_balance = $this->deductCoin($user, $required_coins);
+                    $msg = "msg sent to ".$phone_number."with coin cost ".$required_coins." and remaining balance is ". $remaining_balance;
+                    return $msg;
                 }
             }
         }       

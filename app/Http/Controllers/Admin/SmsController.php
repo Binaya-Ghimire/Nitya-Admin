@@ -40,17 +40,17 @@ class SmsController extends Controller
     			if($total_coins < $required_coins){
                     toastr()->error("You do not have sufficient balance to send the sms");
     			}else{
-    				$this->send($message, $phone_number);
+    				// $this->send($message, $phone_number);
 
-                    // SmsHistory::create([
-                    //     'send_by'=>$user->id,
-                    //     'send_to'=>$phone_number,
-                    //     'message'=>$message,
-                    //     'coins_used'=>$required_coins,
-                    // ]);
-                    // $remaining_balance = $this->deductCoin($user, $required_coins);
-                    // toastr()->success("message sent ... With  total Coin Cost ".$required_coins." And remaining balance is ". $remaining_balance );
-                    // return redirect()->back();
+                    SmsHistory::create([
+                        'send_by'=>$user->id,
+                        'send_to'=>$phone_number,
+                        'message'=>$message,
+                        'coins_used'=>$required_coins,
+                    ]);
+                    $remaining_balance = $this->deductCoin($user, $required_coins);
+                    toastr()->success("message sent ... With  total Coin Cost ".$required_coins." And remaining balance is ". $remaining_balance );
+                    return redirect()->back();
     			}
     		}
     	}   	
