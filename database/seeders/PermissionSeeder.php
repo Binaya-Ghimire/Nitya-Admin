@@ -45,7 +45,7 @@ class PermissionSeeder extends Seeder
             'token-list',
             'token-create',
             'token-edit',
-            'token-delete',
+            'token-delete', 
         ];
         
         $role = Role::first();
