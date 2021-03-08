@@ -30,16 +30,16 @@ class SmsController extends Controller
                 if($total_coins < $required_coins){
                     echo("You do not have sufficient balance to send the sms");
                 }else{
-                    $this->send($message, $phone_number);
-                    SmsHistory::create([
-                        'send_by'=>$user->id,
-                        'send_to'=>$phone_number,
-                        'message'=>$message,
-                        'coins_used'=>$required_coins,
-                    ]);
-                    $remaining_balance = $this->deductCoin($user, $required_coins);
-                    $msg = "msg sent to ".$phone_number."with coin cost ".$required_coins." and remaining balance is ". $remaining_balance;
-                    return $msg;
+                     $this->send($message, $phone_number);
+                    // SmsHistory::create([
+                    //     'send_by'=>$user->id,
+                    //     'send_to'=>$phone_number,
+                    //     'message'=>$message,
+                    //     'coins_used'=>$required_coins,
+                    // ]);
+                    // $remaining_balance = $this->deductCoin($user, $required_coins);
+                    // $msg = "msg sent to ".$phone_number."with coin cost ".$required_coins." and remaining balance is ". $remaining_balance;
+                    // return $msg;
                 }
             }
         }       
@@ -56,9 +56,18 @@ class SmsController extends Controller
 
     public function send($message, $phone_number)
     {
-        $send = new SendSms();
-         $msg = $send->sendsms($phone_number, $message);
-         return response($msg);
+        $splitted_number =  substr($phone_number, 0, 3);
+        if(in_array($splitted_number, ['984', '985', '986'])) {
+            $send = new SendSms();
+            $msg = $send->sendsms($phone_number, $message);
+            echo $msg;
+        }elseif(in_array($splitted_number, ['975', '974'])){
+            echo "Ntc CDMA And NTC Sky";
+        }elseif(in_array($splitted_number, ['980', '981', '982'])){
+            echo "Cannot send to NCell at the moment";
+        }elseif(in_array($splitted_number, ['961', '962', '988'])){
+            echo "Cannot send to Smart Cell at the moment";
+        }
 
     }
 
