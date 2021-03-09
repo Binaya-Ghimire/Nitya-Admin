@@ -194,17 +194,4 @@ class UserController extends Controller
         return redirect()->route('show-user',[$user]);
     }
 
-    public function addRate(User $user)
-    {
-        return view('admin.user.user_rate', compact('user'));
-    }
-
-    public function storeRate(Request $request, User $user)
-    {
-        $user->update([
-            'rate_per_sms'=>$request->rate,
-        ]);
-        toastr()->success('Rate Per SMS updated');
-        return redirect()->route('show-user',[$user]);
-    }
 }

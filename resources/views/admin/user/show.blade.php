@@ -75,7 +75,7 @@
                         <a href="{{route('add-user-balance', $user)}}" class="btn btn-success btn-sm "> Add Balance To This</a>
                         @endcan
 
-                        @can('payment-report')
+                        @can('user-balance-report')
                         <a href="{{route('user-balance-report', $user)}}" class="btn btn-sm btn-info">View Balance Report </a>
                         @endcan
 
