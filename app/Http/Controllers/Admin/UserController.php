@@ -22,6 +22,7 @@ class UserController extends Controller
          $this->middleware('permission:user-ban', ['only' => ['banUser']]);
          $this->middleware('permission:user-unban', ['only' => ['unbanUser']]);
          $this->middleware('permission:user-login', ['only' => ['loginWithoutPass']]);
+         $this->middleware('permission:user-add-balance', ['only' => ['addBlanceForm', 'addBalance']]);
     }
 
     public function index()
@@ -114,7 +115,8 @@ class UserController extends Controller
             'email'=>$request->email,
             'mobile'=>$request->mobile,
             ]);
-            toastr()->success('User Name And Updated Successfully');
+            $user->syncRoles($request->role);
+            toastr()->success('User Updated Successfully');
         }catch(Exception $e){
             toastr()->error($e->getMessage());
         }
@@ -123,13 +125,16 @@ class UserController extends Controller
 
     public function updatePassword(Request $request, User $user)
     {
-        echo "hello" ;
+        $data= $request->validate([
+            'password'=> 'required|string|min:8|confirmed',
+        ]);
+        $user->update([
+            'password'=>Hash::make($request->password),
+        ]);
+        toastr()->success('Password Updated Successfully');
+        return back();
     }
 
-    public function updateRole(Request $request, User $user)
-    {
-        echo "hello there";
-    }
 
     public function banUser(User $user)
     {

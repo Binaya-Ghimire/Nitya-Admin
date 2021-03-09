@@ -26,6 +26,7 @@ class PermissionSeeder extends Seeder
             'user-ban',
             'user-unban',
             'user-login',
+            'user-add-balance',
             'payment-type-list',
             'payment-type-create',
             'payment-type-edit',
@@ -45,7 +46,8 @@ class PermissionSeeder extends Seeder
             'token-list',
             'token-create',
             'token-edit',
-            'token-delete', 
+            'token-delete',
+            'sms-history',
         ];
         
         $role = Role::first();

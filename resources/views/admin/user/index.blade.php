@@ -8,8 +8,10 @@
                     Users
                 </h3>
 
-                <div class="pull-right"> 
+                <div class="pull-right">
+                    @can('user-create') 
                     <a href="{{url('admin/user/create')}}" class="btn btn-primary">Add User</a>
+                    @endcan
                 </div>
             </div>
             <div class="box-body table-responsive">
@@ -40,20 +42,29 @@
                                 <td>
                                     @if (is_null($user->banned_at))
                                        <span class="badge badge-success">Active</span>
+                                       @can('user-ban')
                                        <a href="{{route('ban-user', $user)}}" class="btn btn-danger btn-xs">Ban user</a>
+                                       @endcan
                                     @else
                                         <span class="badge badge-danger">Blocked</span>
+                                        @can('user-unban')
                                         <a href="{{route('unban-user', $user)}}" class="btn btn-success btn-xs">Unban user</a>
+                                        @endcan
                                     @endif
                                 </td>
                                 <td>{{$user->created_at->diffForHumans()}}</td>
                                 <td>
+                                    @can('user-login')
                                     <a href="{{route('clientLogin', $user)}}" target="_blank" class="btn btn-info btn-xs">Login</a>
+                                    @endcan
                                 </td>
                                 <td>
+                                    @can('user-edit')
                                     <a href="{{route('edit-user', $user)}}" class="btn btn-sm btn-primary" >Edit</a>
-                                        
+                                    @endcan
+
                                     <a href="{{route('show-user', $user)}}" class="btn btn-success btn-sm">Show</a>
+                                    
                                 </td>
                             </tr>
                         @endforeach  

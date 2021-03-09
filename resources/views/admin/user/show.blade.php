@@ -8,7 +8,9 @@
                 <h3>
                     User Details
                     <div class="pull-right">
+                        @can('user-create')
                        <a href="{{ route('create-user') }}" class="btn btn-primary">Add User</a>
+                       @endcan
                     </div>
                 </h3>
             </div>
@@ -65,13 +67,21 @@
                     <strong>Created </strong> : {{ $user->created_at->diffForHumans() }}
                 </li>
                 <li class="list-group-item">
+                        @can('user-edit')
                         <a href="{{route('edit-user', $user)}}" class="btn btn-primary btn-sm"> Edit This User</a>
+                        @endcan
 
+                        @can('user-add-balance')
                         <a href="{{route('add-user-balance', $user)}}" class="btn btn-success btn-sm "> Add Balance To This</a>
+                        @endcan
 
+                        @can('payment-report')
                         <a href="{{route('user-balance-report', $user)}}" class="btn btn-sm btn-info">View Balance Report </a>
+                        @endcan
 
+                        @can('sms-history')
                         <a href="{{route('user-sms-history', $user)}}" class="btn btn-warning"> View sms History</a>
+                        @endcan
                 </li>
             </ul>
             <div class="title col-md-12">

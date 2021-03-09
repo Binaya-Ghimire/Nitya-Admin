@@ -9,6 +9,11 @@ use App\Http\Controllers\Controller;
 
 class SmsHistoryController extends Controller
 {
+   public function __construct()
+   {
+   		$this->middleware('permission:sms-history', ['only'=>['smshistory', 'viewMessage']]);
+   }
+
     public function smshistory(User $user)
     {
     	return view('admin.user.sms_history', compact('user'));

@@ -56,7 +56,7 @@
             <div class="form-group">
                <label class="col-md-4 control-label">Confirm Password:</label>
                <div class="col-md-8">
-                  <input  class="form-control" type="Password" name="password" required>
+                  <input  class="form-control" type="Password" name="password_confirmation">
                </div>
             </div>
             <div class="col-md-offset-4">
